@@ -417,6 +417,12 @@ Redux::setSection($opt_name , array(
             ),
             'default'  => '1',
         ),
+        array(
+            'id' => 'blog-wrapper-color',
+            'type' => 'color',
+            'title' => 'Select Color for Blog background Wrapper',
+            'default' => '#efefef',
+        ), 
     )
 ));
   
