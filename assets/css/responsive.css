@@ -1,0 +1,260 @@
+@media (min-width:320px){
+    .topbar-wrapper{
+        display: none;
+    }
+    
+    .main-navigation,.main-header{
+        display: none;
+    }
+    
+    footer, .footer-body p{
+        text-align: center;
+    }
+
+    /* Cart Page */
+    .product-image-cart-table{
+        display: none;
+    }
+
+    .product-details-cart p, span{
+        top:auto;
+    }
+	
+	/* Footer Styles */
+	.footer-head{
+		display:none;
+	}
+	
+	.product-details-content h4 {
+        margin-top: 40px;
+    }
+    
+    li.nav-item {
+        width: 100%;
+    }
+    
+    
+	
+	
+}
+@media (max-width:500px){
+    .blog-img {
+        width: 95%!important;
+        transform: translate(65%)!important;
+    }
+    
+    .blog-listing-item {
+        padding: 20px;
+    }
+    
+    ul.social-icons {
+        position: absolute;
+        text-align: left;
+        left: 0;
+        top: 105%;
+    }
+    
+    ul.social-icons li {
+        display: inline;
+        padding: 0px 20px;
+    }
+    
+    ul.social-icons li:first-child {
+        padding-left: 10px;
+    }
+    
+    .blog-listing-content h4 {
+        margin-top: 25px;
+    }
+}
+@media (min-width: 576px) {}
+@media (max-width:576px){
+    .blog-img {
+        position: relative;
+        width: 360px;
+        margin: 0 auto;
+        transform: translateX(45%);
+        margin-bottom: 35px;
+    }
+    
+    .blog-listing-item {
+        width: 100%;
+    }
+    
+    .blog-listing-content h4::before {
+       display:none;
+    }
+    
+    button.underlined {
+        margin: 0px;
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 0px;
+    }
+
+    
+.inline-form-elements input {
+    width: 100%;
+}
+
+.entry-content {
+    margin-top: 105px;
+}
+
+.block-contact {
+    margin-top: 10px;
+}
+
+    
+}
+@media (min-width: 768px) {
+    .mobile-menu{
+        display: block;
+    }
+    
+     .main-navigation,.main-header{
+        display: none;
+    }
+
+    .product-image-cart-table{
+        display: block;
+    }
+
+    .product-details-cart p, .product-details-cart span{
+        top:-20px!important;
+    }
+	
+	.menu-mobile{
+		display:none;
+	}
+	
+	
+	/* Footer Styles */
+	.footer-head{
+		display:block;
+    }
+    
+
+    .product-details-content h4 {
+        margin-top: 0px;
+    }
+    
+    li.nav-item {
+        width: unset;
+    }
+
+
+    .blog-img {
+        display: none;
+    }
+    
+    .blog-listing-item {width: 100%;}
+    
+    button.underlined {
+        margin-top: 40px;
+    }
+
+    .blog-listing-content h4::before {
+        left: 22%;
+    }
+
+    
+}
+
+@media (max-width:768px){
+    p.woocommerce-result-count {
+        line-height: 10em;
+        margin: 0px;
+    }
+    
+    div#nav-tab {
+        display: inline-block;
+        border-right: 1px solid #d9d9d9;
+        width: 23%;
+    }
+
+    .woocommerce-notices-wrapper {
+        margin-top: 100px;
+    }
+
+    .cart-collaterals {
+        margin-top: 40px;
+    }
+    
+    .coupon {margin-top: 40px;}
+
+    .cart-buttons button {width: 43%;float: left;margin-left: 17px;}
+
+.cart-buttons {
+    margin-bottom: 50px;
+}
+
+td.product-name {
+    width: 250px!important;
+}
+
+form.woocommerce-form.woocommerce-form-login.login{
+    width:350px;
+}
+
+h3.single-item-blog-title{
+    font-size:2em;
+}
+
+
+}
+@media (min-width: 992px) {
+    
+    .mobile-menu{
+        display: none;
+    }
+    .topbar-wrapper{
+        display: block;
+    }
+    
+    
+    .main-navigation,.main-header{
+        display: block;
+    }
+    
+   
+    
+    footer{
+        text-align: left;
+        
+    }
+    .footer-body p{
+        text-align: right;
+    }
+
+    .blog-img {
+        display: block;
+    }
+
+    
+    button.underlined {
+        margin-top: 40px;
+    }
+
+    .blog-listing-content h4::before {
+        left: -22%;
+    }
+
+    .blog-listing-item {
+        width: 80%;
+    }
+
+}
+@media (max-width:992px){
+    button.btn.btn-cart {
+        position: absolute;
+        left: 80%;
+        padding: 5px 10px;
+        font-size: 1.3em;
+        margin-top: 0;
+    }
+    
+    span.qty {
+        font-size: .6em;
+    }
+}
