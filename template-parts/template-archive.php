@@ -5,8 +5,8 @@
                 
                    <!-- Blog Listing Item -->
                    <div class="col-lg-11 mx-auto">
-                        <div class="blog-listing-item">
-                             <div class="blog-img" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)">
+                        <div class="blog-listing-item" style="background-color:<?php echo $onpoint_opt['blog-wrapper-color'] ?>;">
+                             <div class="blog-img" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>);">
                                     <ul class="social-icons">
                                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>

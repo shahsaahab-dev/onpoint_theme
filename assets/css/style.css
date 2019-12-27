@@ -1719,6 +1719,37 @@ h4.text404.text-center {
     letter-spacing: 1px;
 }
 
+
+.mailchimp {
+    background: #e9e3d8;
+    text-align: center;
+    padding: 35px;
+}
+
+h5.mailchimp-h5 {
+    font-family: Playfair Display;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #000;
+    padding-bottom: 20px;
+    font-size: 2em;
+}
+
+.mailchimp input {
+    height: 42px;
+    width: 100%;
+    padding: 10px;
+}
+
+.mailchimp input[type="submit"] {
+    background: #000;
+    color: #fff;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 h3.single-item-blog-title {
     font-size: 5em;
     text-align: center;
@@ -1789,6 +1820,15 @@ h3.single-item-blog-title {
 }
 
 
+.share-box ul.social-icons li {
+    padding: 0px 15px;
+}
+
+ul.social-icons {
+    text-align: center;
+}
+
+
 
 /* Enabling Star Rating */
 .star-rating{
@@ -1824,4 +1864,12 @@ div#review_form input[type="submit"] {
 h2.woocommerce-Reviews-title {
     font-family: Playfair Display;
     text-transform: uppercase;
+}
+
+textarea.wpcf7-form-control.wpcf7-textarea {
+    margin-top: 15px!important;
+}
+
+button[name="tinvwl-add-to-cart"] {
+    font-size: 1em!important;
 }

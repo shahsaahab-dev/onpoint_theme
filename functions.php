@@ -73,19 +73,15 @@ add_action( 'after_setup_theme', 'onpoint_content_width', 0 );
 
 
 function onpoint_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'onpoint' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'onpoint' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Ad Space', 'onpoint' ),
-		'id'            => 'adspace-1',
+		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add Advertisement here.', 'onpoint' ),
+		'before_widget' => '<div class="mailchimp">',
+		'after_widget' => '</div>',
+		'before_title' => '<h5 class="mailchimp-h5">',
+		'after_title' => '</h5>',
 	) );
 }
 add_action( 'widgets_init', 'onpoint_widgets_init' );
@@ -119,7 +115,7 @@ require ONPOINT_THEME . '/theme-functions/theme-functions.php';
 
 require ONPOINT_THEME . '/woocommerce/woocommerce.php';
 require ONPOINT_THEME . '/vc_templates/vc_init.php';
-
+require ONPOINT_THEME . '/inc/sidebar-widget-onpoint.php';
 
 // Theme Options 
 if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) .
