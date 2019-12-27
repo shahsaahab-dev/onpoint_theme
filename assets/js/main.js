@@ -110,5 +110,6 @@ jQuery('.slider-nav').on('click', '.slick-slide', function(event) {
 
 // Product Variation Buttons 
 jQuery('.variation button').click(function(){
-    jQuery('.variation button').toggleClass('active-variation');
+    jQuery('.variation button').removeClass('active-variation');
+    jQuery(this).toggleClass('active-variation');
 })

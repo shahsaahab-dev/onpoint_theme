@@ -9,6 +9,7 @@
  * @package OnPoint
  */
 global $onpoint_opt;
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>

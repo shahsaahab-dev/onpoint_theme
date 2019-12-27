@@ -1286,7 +1286,15 @@ span.select2-selection.select2-selection--single {
     margin-top: 7px;
 }
 
+.woocommerce-notices-wrapper {
+    padding: 0px;
+    margin: 0px;
+}
 
+.woocommerce-info {
+    padding: 20px;
+    margin-bottom: 10px;
+}
 /* End Checkout Page */
 
 
@@ -1780,3 +1788,40 @@ h3.single-item-blog-title {
     margin-top: 100px;
 }
 
+
+
+/* Enabling Star Rating */
+.star-rating{
+    overflow: hidden;
+    position: relative;
+    height:1em;
+    line-height: 1;
+    font-size:1em;
+    width:5.4em;
+    font-family:star;
+}
+.star-rating::before{
+    content: '\73\73\73\73\73';
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+div#review_form input[type="submit"] {
+    background: #000;
+    min-height: 42px;
+    padding: 0px 50px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.active-variation {
+    background: #000!important;
+}
+
+h2.woocommerce-Reviews-title {
+    font-family: Playfair Display;
+    text-transform: uppercase;
+}
