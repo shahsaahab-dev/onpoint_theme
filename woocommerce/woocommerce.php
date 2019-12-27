@@ -8,61 +8,87 @@ add_filter( 'woocommerce_before_variations_form', '__return_empty_array' );
 
 // Shop Page
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
 remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+
 remove_action('woocommerce_before_shop_loop','woocommerce_catalog_ordering',30);
+
 remove_action('woocommerce_sidebar','woocommerce_get_sidebar',10);
 
 // Product Loop
 remove_action('woocommerce_before_shop_loop_item','woocommerce_template_loop_product_link_open',10);
+
 remove_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title',10);
+
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash',10);
+
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail',10);
+
 remove_action('woocommerce_after_shop_loop_item_title','woocommerce_template_loop_price',10);
+
 remove_action('woocommerce_after_shop_loop_item','woocommerce_template_loop_add_to_cart',10);
+
 remove_action('woocommerce_after_shop_loop_item_title','woocommerce_template_loop_rating',5);
 
 // Single Product Display 
 remove_action('woocommerce_before_single_product_summary','woocommerce_show_product_images',20);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_title',5);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_rating',10);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_price',10);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_excerpt',20);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',30);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta',40);
+
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_sharing',50);
+
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_product_data_tabs',10);
 
 
 // Cart Page
 
 
-// Checkout Page 
-remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
 
 // Custom Hooks Added 
 add_action('woocommerce_before_main_content','onpoint_before_content');
+
 add_action('woocommerce_after_main_content','onpoint_after_content');
+
 add_action('woocommerce_before_shop_loop','onpoint_before_loop');
+
 add_action('woocommerce_shop_loop_item_title','onpoint_product_view');
+
 add_action('woocommerce_single_product_summary','onpoint_single_product');
+
 add_action('woocommerce_after_single_product_summary','onpoint_data_tabs');
+
+
 
 // Cart page 
 add_action('woocommerce_before_cart','onpoint_custom_cart_before');
+
 add_action('woocommerce_after_cart','onpoint_custom_cart_after');
+
 add_action('woocommerce_before_shipping_calculator','onpoint_cart_shipping_calc');
+
 
 // Single Product page 
 
 
 // Checkout Page 
-add_action('woocommerce_before_checkout_form','checkout_form_start');
-// add_action('woocommerce_after_checkout_form','checkout_form_end');
+
 add_filter('onpoint_change_heading','onpoint_heading_change_function');
-add_action('woocommerce_checkout_before_order_review_heading','onpoint_before_review_heading');
-add_action('woocommerce_checkout_after_order_review','onpoint_after_review_heading');
+
 
 
 
@@ -252,12 +278,12 @@ function onpoint_single_product(){?>
                         <?php
                             
                         ?>
-                        <!-- <h5>Variation</h5>
+                        <h5>Variation</h5>
                         <button class="variation-clickables">XS</button>
                         <button class="variation-clickables">S</button>
                         <button class="variation-clickables">M</button>
                         <button class="variation-clickables">L</button>
-                        <button class="variation-clickables">XL</button> -->
+                        <button class="variation-clickables">XL</button>
                     </div>
                     <div class="quantity">
                         <h5>Quantity</h5>
@@ -265,7 +291,20 @@ function onpoint_single_product(){?>
                     </div>
                     <div class="extra-info">
                         <strong>Product Number:</strong><?php global $product; echo 'SKU: ' . $product->get_sku(); ?> <br>
-                        <strong>Category:</strong><?php echo get_the_category(); ?><br>
+                        <strong>Category:</strong>
+                        <?php
+                        // Priting the Category Text Here
+                        global $product;
+                        $product_cats_ids = wc_get_product_term_ids( $product->get_id(), 'product_cat' );
+                        foreach( $product_cats_ids as $cat_id ) {
+                            $term = get_term_by( 'id', $cat_id, 'product_cat' );
+                        
+                            echo $term->name;
+                        }
+                        ?>
+                        
+                        <br>
+                        <?php ?>
                         <strong>Tags</strong>
                         <?php
                         $terms = get_terms( 'product_tag' );
@@ -299,9 +338,7 @@ function onpoint_data_tabs(){?>
             <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="profile" aria-selected="false">Customer Reviews</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#shipping" role="tab" aria-controls="contact" aria-selected="false">Shipping Information</a>
-            </li>
+            
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="home-tab">
@@ -309,10 +346,9 @@ function onpoint_data_tabs(){?>
             </div>
             <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
             <?php 
-            // woocommerce_get_template( 'single-product-reviews.php' )
+              comments_template();
             ?>
             </div>
-            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
     </div>
 </div>
@@ -335,32 +371,3 @@ function onpoint_custom_cart_after(){
     </div>';
 }
 
-
-function checkout_form_start(){?>
-    <div class="container">
-	<div class="row">
-        <div class="col-lg-6">
-       
-        
-        <?php
-}
-
-function onpoint_before_review_heading(){?>
-    </div>
-    <div class="col-lg-6">
-    <?php echo woocommerce_checkout_coupon_form(); ?>
-    <?php
-}
-
-function onpoint_after_review_heading(){
-echo '
-</div>
-</div>
-</div>
-';
-}
-
-
-
-
-?>

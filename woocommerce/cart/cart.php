@@ -151,6 +151,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				</div>
 				<div class="col-lg-4">
 				<h3 class="checkout-title">Shipping Calculator</h3>
+				<?php do_action('woocommerce_after_shipping_calculator'); ?>
 				</div>
 				<div class="col-lg-4">
 				<?php if ( wc_coupons_enabled() ) { ?>
