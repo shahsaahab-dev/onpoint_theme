@@ -275,10 +275,17 @@ function onpoint_single_product(){?>
                     </p>
                     <div class="variation">
                         <h5>Variations</h5>
-                        <?php
-                            
+                        <?php 
+                        $product = wc_get_product();
+                        if ( $product->is_type( 'variable' ) ) {
+                        $variations = $product->get_available_variations();
+                        foreach ($variations as $key => $value){
+                        $scs_wc_size = $value['attributes']['attribute_pa_size'];
+
+                        echo  $scs_wc_size. ' ' . $value['price_html'].'<br/>';
+                        }
+                        }
                         ?>
-                        <h5>Variation</h5>
                         <button class="variation-clickables">XS</button>
                         <button class="variation-clickables">S</button>
                         <button class="variation-clickables">M</button>
