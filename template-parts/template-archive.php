@@ -8,10 +8,10 @@
                         <div class="blog-listing-item" style="background-color:<?php echo $onpoint_opt['blog-wrapper-color'] ?>;">
                              <div class="blog-img" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>);">
                                     <ul class="social-icons">
-                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                             <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_the_permalink(); ?>"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="https://pinterest.com/pin/create/button/?url=<?php echo get_the_permalink(); ?>"><i class="fa fa-pinterest"></i></a></li>
+                                            <li><a href="https://twitter.com/home?status=<?php echo get_the_permalink(); ?>"><i class="fa fa-twitter"></i></a></li>
                                         </ul>
                              </div>
                              <div class="row">
