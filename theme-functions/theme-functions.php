@@ -118,4 +118,78 @@ function fetchResults(){
 
 <?php
 }
+
+
+
+
+// Dynamic CSS and JS 
+function dynamic_scripts() {
+	wp_enqueue_style(
+		'main-style',
+		get_template_directory_uri() . '/assets/css/style.css'
+    );
+        // Check If Sticky nav Is On
+       
+        $nav_active = '';
+        global $onpoint_opt;
+        if($onpoint_opt['opt-sticky'] == '1'){
+            $nav_active = "block";
+        }
+        else{
+            $nav_active = "none";
+        }
+
+        // End Sticky nav Logic
+
+        // Background Colors
+        $color_a = '';
+        if(!empty($onpoint_opt['topbar-link-color'])){
+            $color_a = $onpoint_opt['topbar-link-color'];
+        }
+        else{
+            $color_a = '#fff';
+        }
+        // Heaader BG Color
+        $bg_color_main_navigation = '';
+        if(!empty($onpoint_opt['header-bg-color'])){
+            $bg_color_main_navigation = $onpoint_opt['header-bg-color'];
+        }
+        else{
+            $bg_color_main_navigation = '#fff';
+        }
+
+        // Footer BG Color
+        $footer_bg_color = ''; 
+        $footer_text_color = '';
+        if(!empty($onpoint_opt['footer-bg-color']) || !empty($onpoint_opt['footer-text-color'])){
+            $footer_bg_color = $onpoint_opt['footer-bg-color'];
+            $footer_text_color = $onpoint_opt['footer-text-color'];
+        }
+        else{
+            $footer_bg_color = '#000';
+            $footer_text_color = '#fff';
+        }
+        
+        $custom_css = "
+                .nav-active{
+                        display:{$nav_active};
+                }
+                .topbar-wrapper{
+                    color:{$color_a};
+                }
+
+                .main-navigation.nav-active {
+                    background: {$bg_color_main_navigation};
+                }
+
+                .footer-body{
+                background:{$footer_bg_color};
+                color:{$footer_text_color};
+                }
+                
+                
+                ";
+        wp_add_inline_style( 'main-style', $custom_css );
+}
+add_action( 'wp_enqueue_scripts', 'dynamic_scripts' );
 ?>

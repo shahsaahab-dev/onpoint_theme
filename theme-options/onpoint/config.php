@@ -639,7 +639,7 @@ Redux::setSection($opt_name , array(
             'default' => '#000',
         ),
         array(
-            'id' => 'header-text-color',
+            'id' => 'footer-text-color',
             'type' => 'color',
             'title' => 'Choose Footer Text Color',
             'subtitle' => 'Customize Footer Text Color From here',

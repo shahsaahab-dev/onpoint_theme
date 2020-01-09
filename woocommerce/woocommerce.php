@@ -193,7 +193,7 @@ function onpoint_single_product(){?>
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"><?php echo get_the_title(); ?></h5>
+                <h5 class="modal-title" id="exampleModalLongTitle"><?php echo get_the_title(); ?> <span class="separator">|</span><?php woocommerce_template_loop_price(); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

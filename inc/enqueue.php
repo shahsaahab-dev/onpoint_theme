@@ -4,7 +4,7 @@
 function custom_style_scripts(){
     // Styles
     wp_enqueue_style('plugins-css',ONPOINT_THEME_URI . '/assets/css/plugins.css',array(),'1.0','all');
-    wp_enqueue_style('style-css',ONPOINT_THEME_URI . '/assets/css/style.css',array(),'1.0','all');
+    // wp_enqueue_style('style-css',ONPOINT_THEME_URI . '/assets/css/style.css',array(),'1.0','all');
     wp_enqueue_style('responsive',ONPOINT_THEME_URI . '/assets/css/responsive.css',array(),'1.0','all');
 
     // Scripts
