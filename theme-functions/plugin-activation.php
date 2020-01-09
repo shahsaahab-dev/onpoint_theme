@@ -118,11 +118,6 @@ function onpoint_theme_register_required_plugins() {
             'slug'        => 'one-click-demo-import',
             'required' => true,
 		),
-		array(
-			'name'        => 'Social Post Share',
-            'slug'        => 'juiz-social-post-sharer',
-            'required' => true,
-		),
 	);
 
 	/*

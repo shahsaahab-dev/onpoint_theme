@@ -188,13 +188,89 @@ function new_loop_shop_per_page( $cols ) {
 
 
 function onpoint_single_product(){?>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><?php echo get_the_title(); ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="product-img"
+                            style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)"></div>
+                    </div>
+                    <div class="col-lg-7">
+                    <p class="desc"><?php  echo get_the_content(); ?></p>
+                    <div class="rating">
+                        <?php echo wc_get_rating_html( $average, $rating_count ); // WPCS: XSS ok. ?>
+                    </div>
+                    <div class="review-count">
+                        <?php 
+                    $comments_count = wp_count_comments( get_the_id() ); 
+                    $reviews_count = $comments_count->total_comments; 
+                    echo $reviews_count . ' ' . 'Reviews';
+                     ?>
+                    </div>
+                    <div class="stock-avbly">
+                        <?php 
+                        global $product; 
+                        $numleft  = $product->get_stock_quantity(); 
+                        if($numleft > 0){echo 'available in stock';}else{echo 'out of stock';}
+                        ?>
+                    </div>
+                    <h5>Description</h5>
+                    <p>
+                        <?php 
+                        $description = woocommerce_template_single_excerpt();
+                        if(!empty($description)){
+                            echo $description;
+                        }
+                        else{
+                            echo 'This is a variable Product';
+                        }
+                        ?>
+                    </p>
+                    <div class="variation">
+                        <h5>Variations</h5>
+                        <?php 
+                        $product = wc_get_product();
+                        if ( $product->is_type( 'variable' ) ) {
+                        $variations = $product->get_available_variations();
+                        foreach ($variations as $key => $value){
+                        $scs_wc_size = $value['attributes']['attribute_pa_size'];
 
+                        echo  $scs_wc_size. ' ' . $value['price_html'].'<br/>';
+                        }
+                        }
+                        ?>
+                        <button class="variation-clickables">XS</button>
+                        <button class="variation-clickables">S</button>
+                        <button class="variation-clickables">M</button>
+                        <button class="variation-clickables">L</button>
+                        <button class="variation-clickables">XL</button>
+                    </div>
+                    <div class="quantity">
+                        <h5>Quantity</h5>
+                        <?php woocommerce_template_single_add_to_cart(); ?>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div class="product-details-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
                 <div class="slider slider-single">
-                <?php
+                    <?php
                     global $product;
                     if ( $product->is_type( 'variable' ) ){
                         $attachment_ids = $product->get_gallery_attachment_ids();
@@ -204,22 +280,27 @@ function onpoint_single_product(){?>
                             echo '
                             <div class="product-img" style="background-image:url('.$image_link.');">
                             <ul class="user-action">
-                                <li><i class="fa fa-search"></i></li>
-                                <li><i class="fa fa-heart-o"></i></li>
-                                <li><i class="fa fa-shopping-cart"></i></li>
+                                <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                <i class="fa fa-search"></i>
+                              </button></li>
+                                <li>'. do_shortcode('[ti_wishlists_addtowishlist]') .'</i></li>
                             </ul>
                         </div>
                             ';
                         }
                     }
+
                     else{
+                        
                         $image_url = get_the_post_thumbnail_url();
                         echo '
+                        
                             <div class="product-img" style="background-image:url('.$image_url.');">
                             <ul class="user-action">
-                                <li><i class="fa fa-search"></i></li>
-                                <li><i class="fa fa-heart-o"></i></li>
-                                <li><i class="fa fa-shopping-cart"></i></li>
+                            <li><button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                <i class="fa fa-search"></i>
+                              </button></li>
+                                <li>'. do_shortcode('[ti_wishlists_addtowishlist]') .'</i></li>
                             </ul>
                         </div>
                             ';
@@ -228,7 +309,7 @@ function onpoint_single_product(){?>
 
                 </div>
                 <div class="slider slider-nav">
-                <?php
+                    <?php
                     global $product;
 
                     $attachment_ids = $product->get_gallery_attachment_ids();
@@ -248,7 +329,7 @@ function onpoint_single_product(){?>
                         <?php echo wc_get_rating_html( $average, $rating_count ); // WPCS: XSS ok. ?>
                     </div>
                     <div class="review-count">
-                    <?php 
+                        <?php 
                     $comments_count = wp_count_comments( get_the_id() ); 
                     $reviews_count = $comments_count->total_comments; 
                     echo $reviews_count . ' ' . 'Reviews';
@@ -297,7 +378,8 @@ function onpoint_single_product(){?>
                         <?php woocommerce_template_single_add_to_cart(); ?>
                     </div>
                     <div class="extra-info">
-                        <strong>Product Number:</strong><?php global $product; echo 'SKU: ' . $product->get_sku(); ?> <br>
+                        <strong>Product Number:</strong><?php global $product; echo 'SKU: ' . $product->get_sku(); ?>
+                        <br>
                         <strong>Category:</strong>
                         <?php
                         // Priting the Category Text Here
@@ -309,7 +391,7 @@ function onpoint_single_product(){?>
                             echo $term->name;
                         }
                         ?>
-                        
+
                         <br>
                         <?php ?>
                         <strong>Tags</strong>
@@ -336,23 +418,25 @@ function onpoint_single_product(){?>
 }
 
 function onpoint_data_tabs(){?>
- <div class="product-tabs-wrapper">
+<div class="product-tabs-wrapper">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#description" role="tab" aria-controls="home" aria-selected="true">Product Description</a>
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#description" role="tab"
+                    aria-controls="home" aria-selected="true">Product Description</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="profile" aria-selected="false">Customer Reviews</a>
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#comments" role="tab"
+                    aria-controls="profile" aria-selected="false">Customer Reviews</a>
             </li>
-            
+
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="home-tab">
-            <?php the_content(); ?>
+                <?php the_content(); ?>
             </div>
             <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
-            <?php 
+                <?php 
               comments_template();
             ?>
             </div>
@@ -377,4 +461,3 @@ function onpoint_custom_cart_after(){
     </div>
     </div>';
 }
-
