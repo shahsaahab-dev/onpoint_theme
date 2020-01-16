@@ -17,4 +17,15 @@ function onpoint_demo_import(){
 add_filter('pt-ocdi/import_files','onpoint_demo_import');
 
 
+function further_import_settings(){
+    $front_page = get_page_by_title('Home');
+    $blog_page_id = get_page_by_title('Blog');
+
+    update_option('show_on_front','page');
+    update_option('page_on_front', $front_page->ID);
+    update_option('page_for_posts', $blog_page_id->ID);
+}
+
+add_action('pt-ocdi/after_import','further_import_settings');
+
 ?>
